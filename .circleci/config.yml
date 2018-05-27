@@ -15,12 +15,7 @@ jobs:
           name: Install dependencies
           command: |
             apt update
-            apt install -y \
-                curl \
-                software-properties-common
-            curl https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-            add-apt-repository -y "http://apt.llvm.org/bionic/ llvm-toolchain-bionic main"
-            add-apt-repository -y "http://apt.llvm.org/bionic/ llvm-toolchain-bionic-5.0 main"
+            apt install -y software-properties-common
             add-apt-repository -y ppa:hvr/ghc
             add-apt-repository -y ubuntu-toolchain-r/test
             apt update

@@ -17,7 +17,7 @@ jobs:
             apt update
             apt install -y software-properties-common
             add-apt-repository -y ppa:hvr/ghc
-            add-apt-repository -y ubuntu-toolchain-r/test
+            add-apt-repository -y ppa:ubuntu-toolchain-r/test
             apt update
             apt dist-upgrade -y
             apt install -y \

@@ -41,7 +41,7 @@ dependencies:
   - containers
   - directory
   - filepath
-  - ghc
+  - ghc-toolkit-base
   - process
 
 library:

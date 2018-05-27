@@ -29,7 +29,7 @@ Executable genapply
     Default-Language: Haskell2010
     Main-Is: Main.hs
     Build-Depends: base       >= 3   && < 5,
-                   ghc,
+                   ghc-toolkit-base,
                    pretty
 
     if flag(unregisterised)

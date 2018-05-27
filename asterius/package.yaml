@@ -35,9 +35,9 @@ dependencies:
   - deepseq
   - directory
   - filepath
-  - ghc
   - ghc-prim
   - ghc-toolkit
+  - ghc-toolkit-base
   - hashable
   - mtl
   - optparse-applicative

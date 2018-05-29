@@ -29,6 +29,7 @@ import qualified Data.ByteString.Char8 as CBS
 import qualified Data.ByteString.Short as SBS
 import qualified Data.HashMap.Strict as HM
 import Data.List
+import Data.Maybe
 import Data.String
 import Data.Traversable
 import qualified Data.Vector as V
@@ -800,12 +801,12 @@ marshalCmmBlockBody instrs = concat <$> for instrs marshalCmmInstr
 
 marshalCmmBlockBranch ::
      GHC.CmmNode GHC.O GHC.C
-  -> CodeGen ([Expression], V.Vector RelooperAddBranch)
+  -> CodeGen ([Expression], V.Vector RelooperAddBranch, Bool)
 marshalCmmBlockBranch instr =
   case instr of
     GHC.CmmBranch lbl -> do
       k <- marshalLabel lbl
-      pure ([], [AddBranch {to = k, condition = Null, code = Null}])
+      pure ([], [AddBranch {to = k, condition = Null, code = Null}], False)
     GHC.CmmCondBranch {..} -> do
       c <- marshalAndCastCmmExpr cml_pred I32
       kf <- marshalLabel cml_false
@@ -814,7 +815,8 @@ marshalCmmBlockBranch instr =
         ( []
         , V.fromList $
           [AddBranch {to = kt, condition = c, code = Null} | kt /= kf] <>
-          [AddBranch {to = kf, condition = Null, code = Null}])
+          [AddBranch {to = kf, condition = Null, code = Null}]
+        , False)
     GHC.CmmSwitch cml_arg st -> do
       a <- marshalAndCastCmmExpr cml_arg I64
       brs <-
@@ -869,7 +871,9 @@ marshalCmmBlockBranch instr =
                 , code = Null
                 }
               | (dest, tags) <- brs
-              ])
+              ] <>
+              [AddBranch {to = "~unreachable", condition = Null, code = Null}]
+        , isNothing dest_def_m)
     GHC.CmmCall {..} -> do
       t <- marshalAndCastCmmExpr cml_target I64
       pure
@@ -884,22 +888,25 @@ marshalCmmBlockBranch instr =
                     _ -> t
               }
           ]
-        , [])
+        , []
+        , False)
     _ -> throwError $ UnsupportedCmmBranch $ showSBS instr
 
 marshalCmmBlock ::
      [GHC.CmmNode GHC.O GHC.O]
   -> GHC.CmmNode GHC.O GHC.C
-  -> CodeGen RelooperBlock
+  -> CodeGen (RelooperBlock, Bool)
 marshalCmmBlock inner_nodes exit_node = do
   inner_exprs <- marshalCmmBlockBody inner_nodes
-  (br_helper_exprs, br_branches) <- marshalCmmBlockBranch exit_node
+  (br_helper_exprs, br_branches, need_unreachable_block) <-
+    marshalCmmBlockBranch exit_node
   pure
-    RelooperBlock
-      { addBlock =
-          AddBlock {code = concatExpressions $ inner_exprs <> br_helper_exprs}
-      , addBranches = br_branches
-      }
+    ( RelooperBlock
+        { addBlock =
+            AddBlock {code = concatExpressions $ inner_exprs <> br_helper_exprs}
+        , addBranches = br_branches
+        }
+    , need_unreachable_block)
   where
     concatExpressions es =
       case es of
@@ -910,11 +917,12 @@ marshalCmmBlock inner_nodes exit_node = do
 marshalCmmProc :: GHC.CmmGraph -> CodeGen Function
 marshalCmmProc GHC.CmmGraph {g_graph = GHC.GMany _ body _, ..} = do
   entry_k <- marshalLabel g_entry
-  rbs' <-
+  (rbs', us) <-
+    fmap unzip $
     for (GHC.bodyList body) $ \(lbl, GHC.BlockCC _ inner_nodes exit_node) -> do
       k <- marshalLabel lbl
-      b <- marshalCmmBlock (GHC.blockToList inner_nodes) exit_node
-      pure (k, b)
+      (b, u) <- marshalCmmBlock (GHC.blockToList inner_nodes) exit_node
+      pure ((k, b), u)
   let (rbs, lrs) = resolveLocalRegs $ resolveGlobalRegs rbs'
   pure
     Function
@@ -927,7 +935,22 @@ marshalCmmProc GHC.CmmGraph {g_graph = GHC.GMany _ body _, ..} = do
                 [ CFG
                     RelooperRun
                       { entry = entry_k
-                      , blockMap = fromList rbs
+                      , blockMap =
+                          fromList $
+                          [ ( "~unreachable"
+                            , RelooperBlock
+                                { addBlock =
+                                    AddBlock
+                                      { code =
+                                          marshalErrorCode
+                                            errUnreachableBlock
+                                            None
+                                      }
+                                , addBranches = []
+                                })
+                          | or us
+                          ] <>
+                          rbs
                       , labelHelper = 0
                       }
                 , GetLocal {index = 1, valueType = I64}

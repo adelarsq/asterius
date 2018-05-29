@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Project roadmap - Asterius</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Project roadmap";
+    var mkdocs_page_input_path = "roadmap.md";
+    var mkdocs_page_url = "/roadmap/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Asterius</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">For users</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../building/">Building guide</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">For developers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../architecture/">Project architecture</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../webassembly/">About WebAssembly</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Project roadmap</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#m1">M1</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#p0-features">P0 features</a></li>
+        
+            <li><a class="toctree-l4" href="#p1-features">P1 features</a></li>
+        
+            <li><a class="toctree-l4" href="#p2-features">P2 features</a></li>
+        
+            <li><a class="toctree-l4" href="#current-progress">Current progress</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#m2">M2</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#p0-features_1">P0 features</a></li>
+        
+            <li><a class="toctree-l4" href="#p1-features_1">P1 features</a></li>
+        
+            <li><a class="toctree-l4" href="#p2-features_1">P2 features</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../readings/">Reading list</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Asterius</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>For developers &raquo;</li>
+        
+      
+    
+    <li>Project roadmap</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/tweag/asterius/edit/master/docs/roadmap.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>This page maintains a list of milestones along with their planned features. Some notations:</p>
+<ul>
+<li>M0, M1, .. indicates Milestone 0, Milestone 1, etc. The numbers grow monotonically.</li>
+<li>P0, P1, .. incicates Priority 0, Priority 1, etc. The lesser the number, the more significant is the feature.</li>
+<li>A P0 feature blocks a milestone if it is not shipped.</li>
+<li>A P1 feature can delay a milestone if it can be shipped with a reasonable delay.</li>
+<li>A P2 feature can be re-scheduled or modified to prevent blocking a milestone.</li>
+</ul>
+<h2 id="m1">M1</h2>
+<p>Approximate delivery time: Apr 15, 2018 (MISSED)</p>
+<p>The purpose of M1 is to ship an MVP(Minimum Viable Product).</p>
+<h3 id="p0-features">P0 features</h3>
+<ul>
+<li>Can compile a standalone Haskell executable involving simple pure computations plus a few <code>IO</code> routines like <code>putStrLn</code>. The output will be a linked WebAssembly module with HTML/JavaScript loader, and the effect can be demostrated via outputing to a browser console.</li>
+<li>If involved with unsupported primops, foreign calls, etc, a compile-time error instead of a run-time error will be given.</li>
+<li>The wasm rts allocates linear memory only once during startup, and only provides a bump allocator. No GC is implemented. A stack/heap overflow causes the runtime to exit immediately and report error in JavaScript.</li>
+</ul>
+<h3 id="p1-features">P1 features</h3>
+<ul>
+<li>A separate <code>binaryen</code> package to provide raw bindings to the <code>binaryen</code> project.</li>
+<li>A separate <code>wasm-toolkit</code> package to provide a Haskellish IR wrapping <code>binaryen</code>, also providing simple utilities like simulating tail-calls, linking multiple modules, eliminating dead code, etc.</li>
+</ul>
+<h3 id="p2-features">P2 features</h3>
+<ul>
+<li>A test suite which uses Node.js/Headless Chrome to test the generated WebAssembly modules.</li>
+<li>A separate <code>inline-javascript</code> package to provide quasi-quoters for evaluating JavaScript embedded in Haskell, useful for the test suite.</li>
+<li>A build system based on nix/bazel instead of docker for developers on Linux/Mac.</li>
+<li>Fix Windows support, set up AppVeyor for testing the project itself/building the custom ghc bindist required for the project.</li>
+</ul>
+<h3 id="current-progress">Current progress</h3>
+<p>Last updated on: Apr 16, 2018</p>
+<h4 id="regarding-p0-features">Regarding P0 features</h4>
+<ul>
+<li>Able to compile and serialize boot libs(<code>ghc-prim</code>/<code>integer-simple</code>/<code>base</code>, along with <code>.cmm</code> files in <code>rts</code>). The current IR &amp; object format is organized as simple K/V stores, with keys being marshaled Cmm symbols, which will be used as unique identifiers for relocation when linking.</li>
+<li>Able to generate <code>binaryen</code> IR from pure Haskell programs which depend on only boot libs.</li>
+<li>The linker panics about unimplemented C/Cmm routines in <code>rts</code>. They are all related to the storage manager, and to provide pure WebAssembly shims even with the no-GC scenario it takes much more time than anticipated.</li>
+</ul>
+<h4 id="regarding-p1p2-features">Regarding P1/P2 features</h4>
+<ul>
+<li>CI workflows that supports building/testing <code>asterius</code> on Windows/Linux x64 are set up. The headless browser part is not up yet, since no runnable standalone wasm32 binaries are produced for now.</li>
+<li><code>inline-javascript</code> is available.</li>
+<li>(Originally in M2) <a href="https://github.com/tweag/asterius/tree/master/ghc-toolkit"><code>ghc-toolkit</code></a> is available and can be used by any Haskell-to-X compiler author.</li>
+<li>(Originally in M2) A static documentation <a href="https://tweag.github.io/asterius">site</a> is available. More introductory material for newcomers need to be written though.</li>
+</ul>
+<h2 id="m2">M2</h2>
+<p>Approximate delivery time: Jun 30, 2018</p>
+<p>At this point the project status changes from pre-alpha to alpha, meaning it's actually possible to make one or two useful gadgets out of this project.</p>
+<h3 id="p0-features_1">P0 features</h3>
+<ul>
+<li>The wasm rts performs GC. There will be a naive hand-written GC which prevents stack/heap overflow in the long run, but the GC pause may be quite noticable at this point.</li>
+<li>An FFI mechanism, more feature-rich than the current WebAssembly import/export mechanism. It supports keeping handles of arbitrary JavaScript values in the wasm rts and invoking JavaScript functions with those values. Calling back from the JavaScript world is not supported yet.</li>
+</ul>
+<h3 id="p1-features_1">P1 features</h3>
+<ul>
+<li>Support more primops, preferrably everything in <code>GHC.Prim</code> but excluding the following parts (they are planned for milestones beyond M2):<ul>
+<li>Threading</li>
+<li>Weak references</li>
+<li>StableName/StablePtr</li>
+<li>Compact regions</li>
+<li>Sparks</li>
+<li>Bytecode</li>
+<li>SIMD</li>
+<li>Prefetch</li>
+</ul>
+</li>
+<li>More real-world demos, since with FFI it's already possible to work with DOM API.</li>
+</ul>
+<h3 id="p2-features_1">P2 features</h3>
+<ul>
+<li>A separate <code>ghc-toolkit</code> package to provide a framework for compiling from Haskell to anything. Users will only need to be familiar with various GHC IR types, and don't need to bother with details like <code>Cabal</code> integration, frontend plugins, booting, etc.</li>
+<li>Integration with existing JavaScript ecosystem, possibly something like an <code>npm</code> package or a <code>webpack</code> plugin.</li>
+<li>A wiki for potential contributors.</li>
+<li>A blog post about yet another great Tweag I/O project.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../readings/" class="btn btn-neutral float-right" title="Reading list">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../webassembly/" class="btn btn-neutral" title="About WebAssembly"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tweag/asterius" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../webassembly/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../readings/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

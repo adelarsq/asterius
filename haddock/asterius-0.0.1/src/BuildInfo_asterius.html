@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">BuildInfo_asterius</span><span> </span><span class="hs-keyword">where</span><span>
+</span><a name="line-2"></a><span>
+</span><a name="line-3"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Distribution</span><span class="hs-operator">.</span><span class="hs-identifier">Simple</span><span class="hs-operator">.</span><span class="hs-identifier">Compiler</span><span>
+</span><a name="line-4"></a><span>
+</span><a name="line-5"></a><span class="hs-identifier">mkdir</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-6"></a><a name="mkdir"><a href="BuildInfo_asterius.html#mkdir"><span class="hs-identifier">mkdir</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/bin/mkdir&quot;</span><span>
+</span><a name="line-7"></a><span>
+</span><a name="line-8"></a><span class="hs-identifier">cp</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-9"></a><a name="cp"><a href="BuildInfo_asterius.html#cp"><span class="hs-identifier">cp</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/bin/cp&quot;</span><span>
+</span><a name="line-10"></a><span>
+</span><a name="line-11"></a><span class="hs-identifier">node</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-12"></a><a name="node"><a href="BuildInfo_asterius.html#node"><span class="hs-identifier">node</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/usr/bin/node&quot;</span><span>
+</span><a name="line-13"></a><span>
+</span><a name="line-14"></a><span class="hs-identifier">sh</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-15"></a><a name="sh"><a href="BuildInfo_asterius.html#sh"><span class="hs-identifier">sh</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/bin/sh&quot;</span><span>
+</span><a name="line-16"></a><span>
+</span><a name="line-17"></a><span class="hs-identifier">ghc</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-18"></a><a name="ghc"><a href="BuildInfo_asterius.html#ghc"><span class="hs-identifier">ghc</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/.stack/programs/x86_64-linux/ghc-8.5.20180413/bin/ghc&quot;</span><span>
+</span><a name="line-19"></a><span>
+</span><a name="line-20"></a><span class="hs-identifier">ghcPkg</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-21"></a><a name="ghcPkg"><a href="BuildInfo_asterius.html#ghcPkg"><span class="hs-identifier">ghcPkg</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/.stack/programs/x86_64-linux/ghc-8.5.20180413/bin/ghc-pkg&quot;</span><span>
+</span><a name="line-22"></a><span>
+</span><a name="line-23"></a><span class="hs-identifier">ghcLibDir</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-24"></a><a name="ghcLibDir"><a href="BuildInfo_asterius.html#ghcLibDir"><span class="hs-identifier">ghcLibDir</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/.stack/programs/x86_64-linux/ghc-8.5.20180413/lib/ghc-8.5.20180413&quot;</span><span>
+</span><a name="line-25"></a><span>
+</span><a name="line-26"></a><span class="hs-identifier">binDir</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-27"></a><a name="binDir"><a href="BuildInfo_asterius.html#binDir"><span class="hs-identifier">binDir</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/project/.stack-work/install/x86_64-linux/ghc-8.5/8.5.20180413/bin&quot;</span><span>
+</span><a name="line-28"></a><span>
+</span><a name="line-29"></a><span class="hs-identifier">libDir</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-30"></a><a name="libDir"><a href="BuildInfo_asterius.html#libDir"><span class="hs-identifier">libDir</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/project/.stack-work/install/x86_64-linux/ghc-8.5/8.5.20180413/lib/x86_64-linux-ghc-8.5.20180413/asterius-0.0.1-JUXj6TQfoma4JdFhJdbwf4&quot;</span><span>
+</span><a name="line-31"></a><span>
+</span><a name="line-32"></a><span class="hs-identifier">dynLibDir</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-33"></a><a name="dynLibDir"><a href="BuildInfo_asterius.html#dynLibDir"><span class="hs-identifier">dynLibDir</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/project/.stack-work/install/x86_64-linux/ghc-8.5/8.5.20180413/lib/x86_64-linux-ghc-8.5.20180413&quot;</span><span>
+</span><a name="line-34"></a><span>
+</span><a name="line-35"></a><span class="hs-identifier">dataDir</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-36"></a><a name="dataDir"><a href="BuildInfo_asterius.html#dataDir"><span class="hs-identifier">dataDir</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/project/.stack-work/install/x86_64-linux/ghc-8.5/8.5.20180413/share/x86_64-linux-ghc-8.5.20180413/asterius-0.0.1&quot;</span><span>
+</span><a name="line-37"></a><span>
+</span><a name="line-38"></a><span class="hs-identifier">libexecDir</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-39"></a><a name="libexecDir"><a href="BuildInfo_asterius.html#libexecDir"><span class="hs-identifier">libexecDir</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/project/.stack-work/install/x86_64-linux/ghc-8.5/8.5.20180413/libexec/x86_64-linux-ghc-8.5.20180413/asterius-0.0.1&quot;</span><span>
+</span><a name="line-40"></a><span>
+</span><a name="line-41"></a><span class="hs-identifier">sysconfDir</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">FilePath</span><span>
+</span><a name="line-42"></a><a name="sysconfDir"><a href="BuildInfo_asterius.html#sysconfDir"><span class="hs-identifier">sysconfDir</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-string">&quot;/root/project/.stack-work/install/x86_64-linux/ghc-8.5/8.5.20180413/etc&quot;</span><span>
+</span><a name="line-43"></a><span>
+</span><a name="line-44"></a><span class="hs-identifier">packageDBStack</span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-identifier hs-type">PackageDBStack</span><span>
+</span><a name="line-45"></a><a name="packageDBStack"><a href="BuildInfo_asterius.html#packageDBStack"><span class="hs-identifier">packageDBStack</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-special">[</span><span class="hs-identifier hs-var">GlobalPackageDB</span><span class="hs-special">,</span><span class="hs-identifier hs-var">SpecificPackageDB</span><span> </span><span class="hs-string">&quot;/root/.stack/snapshots/x86_64-linux/ghc-8.5/8.5.20180413/pkgdb&quot;</span><span class="hs-special">,</span><span class="hs-identifier hs-var">SpecificPackageDB</span><span> </span><span class="hs-string">&quot;/root/project/.stack-work/install/x86_64-linux/ghc-8.5/8.5.20180413/pkgdb&quot;</span><span class="hs-special">]</span><span>
+</span><a name="line-46"></a></pre></body></html>

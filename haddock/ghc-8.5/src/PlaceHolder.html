@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# LANGUAGE DeriveDataTypeable #-}</span><span>
+</span><a name="line-2"></a><span class="hs-pragma">{-# LANGUAGE TypeFamilies #-}</span><span>
+</span><a name="line-3"></a><span class="hs-pragma">{-# LANGUAGE ConstraintKinds #-}</span><span>
+</span><a name="line-4"></a><span class="hs-pragma">{-# LANGUAGE FlexibleContexts #-}</span><span>
+</span><a name="line-5"></a><span class="hs-pragma">{-# LANGUAGE StandaloneDeriving #-}</span><span>
+</span><a name="line-6"></a><span>
+</span><a name="line-7"></a><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">PlaceHolder</span><span> </span><span class="hs-keyword">where</span><span>
+</span><a name="line-8"></a><span>
+</span><a name="line-9"></a><span class="hs-keyword">import</span><span> </span><a href="GhcPrelude.html"><span class="hs-identifier">GhcPrelude</span></a><span> </span><span class="hs-special">(</span><span> </span><span class="hs-identifier hs-type">Eq</span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-type">Ord</span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span> </span><span class="hs-special">)</span><span>
+</span><a name="line-10"></a><span>
+</span><a name="line-11"></a><span class="hs-keyword">import</span><span> </span><a href="Outputable.html"><span class="hs-identifier">Outputable</span></a><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span> </span><span class="hs-special">(</span><a href="Outputable.html#%3C%3E"><span class="hs-operator hs-var">&lt;&gt;</span></a><span class="hs-special">)</span><span> </span><span class="hs-special">)</span><span>
+</span><a name="line-12"></a><span class="hs-keyword">import</span><span> </span><a href="Name.html"><span class="hs-identifier">Name</span></a><span>
+</span><a name="line-13"></a><span class="hs-keyword">import</span><span> </span><a href="NameSet.html"><span class="hs-identifier">NameSet</span></a><span>
+</span><a name="line-14"></a><span class="hs-keyword">import</span><span> </span><a href="RdrName.html"><span class="hs-identifier">RdrName</span></a><span>
+</span><a name="line-15"></a><span class="hs-keyword">import</span><span> </span><a href="Var.html"><span class="hs-identifier">Var</span></a><span>
+</span><a name="line-16"></a><span>
+</span><a name="line-17"></a><span class="hs-keyword">import</span><span> </span><a href="../base-4.11.1.0/src/%{MODULE/./-}.html#%{NAME}/Data.Data.html"><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">Data</span></a><span> </span><span class="hs-keyword">hiding</span><span> </span><span class="hs-special">(</span><span> </span><a href="../base-4.11.1.0/src/%{MODULE/./-}.html#%{NAME}/Data.Data.html#Fixity"><span class="hs-identifier hs-type">Fixity</span></a><span> </span><span class="hs-special">)</span><span>
+</span><a name="line-18"></a><span>
+</span><a name="line-19"></a><span>
+</span><a name="line-20"></a><span class="hs-comment">{-
+%************************************************************************
+%*                                                                      *
+\subsection{Annotating the syntax}
+%*                                                                      *
+%************************************************************************
+-}</span><span>
+</span><a name="line-27"></a><span>
+</span><a name="line-28"></a><span class="hs-comment">-- NB: These are intentionally open, allowing API consumers (like Haddock)</span><span>
+</span><a name="line-29"></a><span class="hs-comment">-- to declare new instances</span><span>
+</span><a name="line-30"></a><span>
+</span><a name="line-31"></a><span class="hs-comment">-- | used as place holder in PostTc and PostRn values</span><span>
+</span><a name="line-32"></a><span class="hs-keyword">data</span><span> </span><a name="PlaceHolder"><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier">PlaceHolder</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><a name="PlaceHolder"><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier">PlaceHolder</span></a></a><span>
+</span><a name="line-33"></a><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><a href="../base-4.11.1.0/src/%{MODULE/./-}.html#%{NAME}/Data.Data.html#Data"><span class="hs-identifier hs-type">Data</span></a><span class="hs-special">,</span><span class="hs-identifier hs-type">Eq</span><span class="hs-special">,</span><span class="hs-identifier hs-type">Ord</span><span class="hs-special">)</span><span>
+</span><a name="line-34"></a><span>
+</span><a name="line-35"></a><span class="hs-keyword">instance</span><span> </span><a href="Outputable.html#Outputable"><span class="hs-identifier hs-type">Outputable</span></a><span> </span><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier hs-type">PlaceHolder</span></a><span> </span><span class="hs-keyword">where</span><span>
+</span><a name="line-36"></a><span>  </span><a name="local-8214565720323909174"><a href="Outputable.html#ppr"><span class="hs-identifier">ppr</span></a></a><span> </span><span class="hs-identifier">_</span><span> </span><span class="hs-glyph">=</span><span> </span><a href="Outputable.html#text"><span class="hs-identifier hs-var">text</span></a><span> </span><span class="hs-string">&quot;PlaceHolder&quot;</span><span>
+</span><a name="line-37"></a><span>
+</span><a name="line-38"></a><span class="hs-identifier">placeHolder</span><span> </span><span class="hs-glyph">::</span><span> </span><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier hs-type">PlaceHolder</span></a><span>
+</span><a name="line-39"></a><a name="placeHolder"><a href="PlaceHolder.html#placeHolder"><span class="hs-identifier">placeHolder</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier hs-var">PlaceHolder</span></a><span>
+</span><a name="line-40"></a><span>
+</span><a name="line-41"></a><span class="hs-identifier">placeHolderType</span><span> </span><span class="hs-glyph">::</span><span> </span><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier hs-type">PlaceHolder</span></a><span>
+</span><a name="line-42"></a><a name="placeHolderType"><a href="PlaceHolder.html#placeHolderType"><span class="hs-identifier">placeHolderType</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier hs-var">PlaceHolder</span></a><span>
+</span><a name="line-43"></a><span>
+</span><a name="line-44"></a><span class="hs-identifier">placeHolderNames</span><span> </span><span class="hs-glyph">::</span><span> </span><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier hs-type">PlaceHolder</span></a><span>
+</span><a name="line-45"></a><a name="placeHolderNames"><a href="PlaceHolder.html#placeHolderNames"><span class="hs-identifier">placeHolderNames</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><a href="PlaceHolder.html#PlaceHolder"><span class="hs-identifier hs-var">PlaceHolder</span></a><span>
+</span><a name="line-46"></a><span>
+</span><a name="line-47"></a><span class="hs-identifier">placeHolderNamesTc</span><span> </span><span class="hs-glyph">::</span><span> </span><a href="NameSet.html#NameSet"><span class="hs-identifier hs-type">NameSet</span></a><span>
+</span><a name="line-48"></a><a name="placeHolderNamesTc"><a href="PlaceHolder.html#placeHolderNamesTc"><span class="hs-identifier">placeHolderNamesTc</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><a href="NameSet.html#emptyNameSet"><span class="hs-identifier hs-var">emptyNameSet</span></a><span>
+</span><a name="line-49"></a><span>
+</span><a name="line-50"></a><span class="hs-comment">{-
+
+Note [Pass sensitive types]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Since the same AST types are re-used through parsing,renaming and type
+checking there are naturally some places in the AST that do not have
+any meaningful value prior to the pass they are assigned a value.
+
+Historically these have been filled in with place holder values of the form
+
+  panic &quot;error message&quot;
+
+This has meant the AST is difficult to traverse using standard generic
+programming techniques. The problem is addressed by introducing
+pass-specific data types, implemented as a pair of open type families,
+one for PostTc and one for PostRn. These are then explicitly populated
+with a PlaceHolder value when they do not yet have meaning.
+
+In terms of actual usage, we have the following
+
+  PostTc id Kind
+  PostTc id Type
+
+  PostRn id Fixity
+  PostRn id NameSet
+
+TcId and Var are synonyms for Id
+
+Unfortunately the type checker termination checking conditions fail for the
+DataId constraint type based on this, so even though it is safe the
+UndecidableInstances pragma is required where this is used.
+-}</span><span>
+</span><a name="line-82"></a><span>
+</span><a name="line-83"></a><span>
+</span><a name="line-84"></a><span class="hs-comment">-- |Follow the @id@, but never beyond Name. This is used in a 'HsMatchContext',</span><span>
+</span><a name="line-85"></a><span class="hs-comment">-- for printing messages related to a 'Match'</span><span>
+</span><a name="line-86"></a><span class="hs-keyword">type</span><span> </span><span class="hs-keyword">family</span><span> </span><a name="NameOrRdrName"><a href="PlaceHolder.html#NameOrRdrName"><span class="hs-identifier">NameOrRdrName</span></a></a><span> </span><a name="local-6989586621679390302"><a href="#local-6989586621679390302"><span class="hs-identifier">id</span></a></a><span> </span><span class="hs-keyword">where</span><span>
+</span><a name="line-87"></a><span>  </span><span class="hs-identifier">NameOrRdrName</span><span> </span><a href="Var.html#Id"><span class="hs-identifier hs-type">Id</span></a><span>      </span><span class="hs-glyph">=</span><span> </span><a href="Name.html#Name"><span class="hs-identifier hs-type">Name</span></a><span>
+</span><a name="line-88"></a><span>  </span><span class="hs-identifier">NameOrRdrName</span><span> </span><a href="Name.html#Name"><span class="hs-identifier hs-type">Name</span></a><span>    </span><span class="hs-glyph">=</span><span> </span><a href="Name.html#Name"><span class="hs-identifier hs-type">Name</span></a><span>
+</span><a name="line-89"></a><span>  </span><span class="hs-identifier">NameOrRdrName</span><span> </span><a href="RdrName.html#RdrName"><span class="hs-identifier hs-type">RdrName</span></a><span> </span><span class="hs-glyph">=</span><span> </span><a href="RdrName.html#RdrName"><span class="hs-identifier hs-type">RdrName</span></a><span>
+</span><a name="line-90"></a></pre></body></html>
